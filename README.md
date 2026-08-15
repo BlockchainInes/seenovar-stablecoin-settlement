@@ -97,47 +97,6 @@ Execution failure
 
 The settlement lifecycle is enforced through explicit state transitions. Execution is permitted only after compliance approval, while failed execution paths transition deterministically to `FAILED`.
 
-## Settlement Lifecycle
-
-```text
-CREATED
-   │
-   ▼
-COMPLIANCE_PENDING
-   │
-   ▼
-APPROVED
-   │
-   ▼
-SUBMITTED
-   │
-   ▼
-CONFIRMED
-   │
-   ├──► Settlement Ledger
-   │
-   ├──► On-Chain Registration
-   │
-   └──► On-Chain Reconciliation
-              │
-              ▼
-         RECONCILED
-
-Execution failure
-       │
-       ▼
-     FAILED
-```
-
-The state machine prevents invalid lifecycle progression and ensures that execution cannot occur before compliance approval.
-
----
-
-## Live Network Evidence
-
-The settlement registry is deployed and source-verified on **Ethereum Sepolia**.
-
-### Verified Settlement Registry
 
 **Contract**
 
