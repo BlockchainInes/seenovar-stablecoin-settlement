@@ -62,11 +62,6 @@ Ethereum is used as an independent attestation and reconciliation layer rather t
 This separation limits unnecessary on-chain exposure while preserving independently verifiable evidence of settlement registration and reconciliation.
 
 ---
-
-## Settlement Lifecycle
-
-```
-
 ### Architectural Boundary
 
 Settlement-domain state and institutional metadata remain authoritative in the application layer.
@@ -76,6 +71,40 @@ Ethereum is used as an independent attestation and reconciliation layer rather t
 This separation limits unnecessary on-chain exposure while preserving independently verifiable evidence of settlement registration and reconciliation.
 
 ---
+
+## Settlement Lifecycle
+
+```text
+CREATED
+   |
+   v
+COMPLIANCE_PENDING
+   |
+   v
+APPROVED
+   |
+   v
+SUBMITTED
+   |
+   v
+CONFIRMED
+   |
+   +----> Settlement Ledger
+   |
+   +----> On-Chain Registration
+   |
+   +----> On-Chain Reconciliation
+                 |
+                 v
+            RECONCILED
+
+Execution failure
+       |
+       v
+     FAILED
+```
+
+The settlement lifecycle is enforced through explicit state transitions. Execution is permitted only after compliance approval, while failed execution paths transition deterministically to `FAILED`.
 
 ## Settlement Lifecycle
 
