@@ -28,11 +28,17 @@ Built with **TypeScript, Fastify, Solidity, ethers.js, SQLite, Hardhat, and Vite
 
 ## Architecture
 
-```mermaid
-flowchart LR
-    CLIENT[Institutional Client] --> API[Settlement API]
+## Architecture
 
-    API --> SERVICE[Settlement Service]
+```mermaid
+flowchart TB
+    CLIENT[Institutional Client]
+    API[Settlement API]
+    SERVICE[Settlement Service]
+
+    CLIENT --> API
+    API --> SERVICE
+
     SERVICE --> POLICY[Compliance & Policy Layer]
     SERVICE --> ENGINE[Settlement State Machine]
 
@@ -48,7 +54,17 @@ flowchart LR
     ETH --> REGISTER[Settlement Registration]
     ETH --> RECON[Reconciliation Attestation]
 
-    RECON --> FINAL[RECONCILED]
+    REGISTER --> FINAL[Verifiable On-Chain Evidence]
+    RECON --> FINAL
+```
+
+### Architectural Boundary
+
+Settlement-domain state and institutional metadata remain authoritative in the application layer.
+
+Ethereum is used as an independent attestation and reconciliation layer rather than as the system of record for complete institutional settlement data.
+
+This separation limits unnecessary on-chain exposure while preserving independently verifiable evidence of settlement registration and reconciliation.
 ```
 
 ### Architectural Boundary
