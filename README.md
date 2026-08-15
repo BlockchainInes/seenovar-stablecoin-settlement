@@ -97,6 +97,11 @@ Execution failure
 
 The settlement lifecycle is enforced through explicit state transitions. Execution is permitted only after compliance approval, while failed execution paths transition deterministically to `FAILED`.
 
+## Live Network Evidence
+
+The settlement registry is deployed and source-verified on **Ethereum Sepolia**.
+
+### Verified Settlement Registry
 
 **Contract**
 
