@@ -62,15 +62,6 @@ Ethereum is used as an independent attestation and reconciliation layer rather t
 This separation limits unnecessary on-chain exposure while preserving independently verifiable evidence of settlement registration and reconciliation.
 
 ---
-### Architectural Boundary
-
-Settlement-domain state and institutional metadata remain authoritative in the application layer.
-
-Ethereum is used as an independent attestation and reconciliation layer rather than as the system of record for complete institutional settlement data.
-
-This separation limits unnecessary on-chain exposure while preserving independently verifiable evidence of settlement registration and reconciliation.
-
----
 
 ## Settlement Lifecycle
 
