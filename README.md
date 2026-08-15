@@ -25,23 +25,12 @@ Built with **TypeScript, Fastify, Solidity, ethers.js, SQLite, Hardhat, and Vite
 - Failure-state handling across the execution lifecycle
 
 ---
-
 ## Architecture
-
-```
-
-
-
-
 
 ```mermaid
 flowchart TB
-    CLIENT[Institutional Client]
-    API[Settlement API]
-    SERVICE[Settlement Service]
-
-    CLIENT --> API
-    API --> SERVICE
+    CLIENT[Institutional Client] --> API[Settlement API]
+    API --> SERVICE[Settlement Service]
 
     SERVICE --> POLICY[Compliance & Policy Layer]
     SERVICE --> ENGINE[Settlement State Machine]
@@ -58,11 +47,22 @@ flowchart TB
     ETH --> REGISTER[Settlement Registration]
     ETH --> RECON[Reconciliation Attestation]
 
-    REGISTER --> FINAL[Verifiable On-Chain Evidence]
-    RECON --> FINAL
+    REGISTER --> EVIDENCE[Verifiable On-Chain Evidence]
+    RECON --> EVIDENCE
 ```
 
 ### Architectural Boundary
+
+Settlement-domain state and institutional metadata remain authoritative in the application layer.
+
+Ethereum is used as an independent attestation and reconciliation layer rather than as the system of record for complete institutional settlement data.
+
+This separation limits unnecessary on-chain exposure while preserving independently verifiable evidence of settlement registration and reconciliation.
+
+---
+
+## Settlement Lifecycle
+
 
 Settlement-domain state and institutional metadata remain authoritative in the application layer.
 
