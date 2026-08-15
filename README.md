@@ -27,7 +27,6 @@ Built with **TypeScript, Fastify, Solidity, ethers.js, SQLite, Hardhat, and Vite
 ---
 
 ## Architecture
-## Architecture
 
 ```mermaid
 
