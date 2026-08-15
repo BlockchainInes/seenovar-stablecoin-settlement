@@ -29,6 +29,33 @@ Built with **TypeScript, Fastify, Solidity, ethers.js, SQLite, Hardhat, and Vite
 ## Architecture
 
 ```mermaid
+flowchart TD
+    A[Institutional client] --> B[Settlement API]
+    B --> C[Settlement service]
+    C --> D[Compliance & policy layer]
+    C --> E[Settlement state machine]
+    E --> F[(Persistent repository)]
+    E --> G[Settlement orchestrator]
+    G --> H[Execution adapter]
+    G --> I[Settlement ledger]
+    G --> J[Blockchain registry adapter]
+    J --> K[(Ethereum Sepolia)]
+    K --> L[Settlement registration]
+    K --> M[Reconciliation attestation]
+    L --> N[Verifiable on-chain evidence]
+    M --> N
+
+    classDef app fill:#f1efe8,stroke:#5f5e5a,color:#2c2c2a;
+    classDef chain fill:#e6f1fb,stroke:#185fa5,color:#042c53;
+    class A,B,C,D,E,F,G,H,I app
+    class J,K,L,M,N chain
+```
+
+
+
+
+
+```mermaid
 flowchart TB
     CLIENT[Institutional Client]
     API[Settlement API]
